@@ -453,11 +453,17 @@ class MdvFile:
                 np_form = '>f'
             else:
                 raise ValueError('unknown encoding: ', encoding_type)
-            decompr_data = gzip_file_handle.read(struct.calcsize(fmt))
-            gzip_file_handle.close()
+            try:
+              decompr_data = gzip_file_handle.read(struct.calcsize(fmt))
+              gzip_file_handle.close()
+            except IOError:
+              decompr_data = compr_data
+              gzip_file_handle.close()
 
             # read the decompressed data, reshape and mask
             sw_data = np.fromstring(decompr_data, np_form).astype('float32')
+            print len(sw_data), ngates, nrays, ngates*nrays
+            print encoding_type,  ENCODING_INT8,  ENCODING_INT16, ENCODING_FLOAT32
             sw_data.shape = (nrays, ngates)
             mask = sw_data == field_header['bad_data_value']
             np.putmask(sw_data, mask, [np.NaN])
