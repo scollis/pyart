@@ -10,6 +10,9 @@ texture
     texture
 """
 
+from ..correct.phase_proc import smooth_and_trim
+from numpy import zeros_like, sqrt
+
 def texture(field, npts):
     """
     Return the root mean squared "noise" where the mean is a butterworth
@@ -32,15 +35,14 @@ def texture(field, npts):
     texture_field : Field
         A field containing the texture information.
     """
-    
+
     texture_field = field.copy()
-    tex_array = np.zeros_like(field['data'])
+    tex_array = zeros_like(field['data'])
     for i in range(texture_field['data'].shape[0]):
         this_ray_of_data = field['data'][i,:]
-        mean = pyart.correct.phase_proc.smooth_and_trim(\
-                                            this_ray_of_data, window_len = npts)
-        texture = pyart.correct.phase_proc.smooth_and_trim(\
-                     np.sqrt((this_ray_of_data - mean) ** 2), window_len = npts)
+        mean = smooth_and_trim(this_ray_of_data, window_len = npts)
+        texture = smooth_and_trim(\
+                     sqrt((this_ray_of_data - mean) ** 2), window_len = npts)
         tex_array[i,:] = texture
     texture_field['data'] = tex_array
     texture_field['standard_name'] = "texture of " \
