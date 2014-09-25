@@ -20,6 +20,6 @@ try:
 except:
     _F90_EXTENSIONS_AVAILABLE = False
 
-from texture import texture
+from .texture import texture
 
 __all__ = [s for s in dir() if not s.startswith('_')]
