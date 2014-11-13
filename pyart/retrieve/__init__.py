@@ -20,6 +20,11 @@ try:
 except:
     _F90_EXTENSIONS_AVAILABLE = False
 
-from .texture import texture
+try:
+    from .advection import  grid_displacememt_pc
+    _ADVECTION_AVAILABLE = True
+except:
+    _ADVECTION_AVAILABLE = False
+
 
 __all__ = [s for s in dir() if not s.startswith('_')]
