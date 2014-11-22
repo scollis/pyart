@@ -19,6 +19,9 @@ Radar retrievals
     map_profile_to_gates
     steiner_conv_strat
     texture_of_complex_phase
+    grid_displacement_pc
+    grid_shift
+    add_grids
 
 """
 
@@ -28,7 +31,7 @@ from .gate_id import map_profile_to_gates, fetch_radar_time_profile
 from .simple_moment_calculations import calculate_snr_from_reflectivity
 
 try:
-    from .advection import  grid_displacement_pc, grid_shift
+    from .advection import  grid_displacement_pc, grid_shift, add_grids
     _ADVECTION_AVAILABLE = True
 except:
     _ADVECTION_AVAILABLE = False
