@@ -10,7 +10,11 @@ Functions for performing radar retrievals.
 .. autosummary::
     :toctree: generated/
 
+    fetch_radar_time_profile
+    map_profile_to_gates
     steiner_conv_strat
+    calculate_snr_from_reflectivity
+    texture_of_complex_phase
 
 """
 
@@ -20,6 +24,10 @@ try:
 except:
     _F90_EXTENSIONS_AVAILABLE = False
 
+
 from .texture import texture
+
+from .gate_id import map_profile_to_gates, fetch_radar_time_profile
+from .simple_moment_calculations import calculate_snr_from_reflectivity
 
 __all__ = [s for s in dir() if not s.startswith('_')]

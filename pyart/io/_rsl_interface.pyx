@@ -24,6 +24,9 @@ Cython wrapper around the NASA TRMM RSL library.
 """
 
 cimport _rsl_h
+# the next line is required so that RSL_F_LIST and RSL_INVF_LIST can be
+# properly wrapped as Cython does not export the typedef from _rsl_h
+ctypedef unsigned short Range
 import numpy as np
 cimport numpy as np
 from datetime import datetime
@@ -85,9 +88,8 @@ cpdef create_volume(
         _RslVolume containing array data.
 
     """
-    # the next two variables will not work at the module level, see:
-    # http://trac.cython.org/cython_trac/ticket/113
-    cdef (float (*)(_rsl_h.Range)) * RSL_f_list = [
+    # these variables can be moved to the module level if used elsewhere
+    cdef (float (*)(_rsl_h.Range)) * RSL_F_LIST = [
         _rsl_h.DZ_F, _rsl_h.VR_F, _rsl_h.SW_F, _rsl_h.CZ_F, _rsl_h.ZT_F,
         _rsl_h.DR_F, _rsl_h.LR_F, _rsl_h.ZD_F, _rsl_h.DM_F, _rsl_h.RH_F,
         _rsl_h.PH_F, _rsl_h.XZ_F, _rsl_h.CD_F, _rsl_h.MZ_F, _rsl_h.MD_F,
@@ -98,7 +100,7 @@ cpdef create_volume(
         _rsl_h.SW_F, _rsl_h.DZ_F, _rsl_h.CZ_F, _rsl_h.PH_F, _rsl_h.SD_F,
         _rsl_h.DZ_F, _rsl_h.DZ_F]
 
-    cdef (_rsl_h.Range (*)(float)) * RSL_invf_list = [
+    cdef (_rsl_h.Range (*)(float)) * RSL_INVF_LIST = [
         _rsl_h.DZ_INVF, _rsl_h.VR_INVF, _rsl_h.SW_INVF, _rsl_h.CZ_INVF,
         _rsl_h.ZT_INVF, _rsl_h.DR_INVF, _rsl_h.LR_INVF, _rsl_h.ZD_INVF,
         _rsl_h.DM_INVF, _rsl_h.RH_INVF, _rsl_h.PH_INVF, _rsl_h.XZ_INVF,
@@ -132,8 +134,8 @@ cpdef create_volume(
             ray = _rsl_h.RSL_new_ray(nbins)
             sweep.ray[nray] = ray
             ray.h.nbins = nbins
-            ray.h.f = RSL_f_list[vol_num]
-            ray.h.invf = RSL_invf_list[vol_num]
+            ray.h.f = RSL_F_LIST[vol_num]
+            ray.h.invf = RSL_INVF_LIST[vol_num]
             for nbin in range(nbins):
                 ray.range[nbin] = ray.h.invf(arr[ray_index, nbin])
             ray_index += 1
@@ -321,7 +323,7 @@ cdef class _RslRay:
         s = self
         full_seconds, fractional_seconds = divmod(s.sec, 1)
         microseconds = int(fractional_seconds * 1e6)
-        return datetime(s.year, s.month, s.day, s.hour, s.minute, 
+        return datetime(s.year, s.month, s.day, s.hour, s.minute,
                         int(full_seconds), microseconds)
 
     def get_data(self):
@@ -1001,6 +1003,39 @@ cdef class _RslVolume:
                     data[ray_count + nray, nbin] = ray.h.f(raw)
             ray_count += nrays
         return data
+
+    def is_range_bins_uniform(self):
+        """
+        is_range_bins_uniform()
+
+        Return True is the locations of the range bin are identical for all
+        rays, False if locations change in one or more rays.
+        """
+        cdef int nrays = self._Volume.sweep[0].h.nrays
+        cdef _rsl_h.Sweep * sweep
+        cdef _rsl_h.Ray * ray
+
+        # loop over the sweeps and rays checking that the gate_size and
+        # range_bin1 are the same as the that in the first ray
+        sweep = self._Volume.sweep[0]
+        assert sweep is not NULL
+        ray = sweep.ray[0]
+        assert ray is not NULL
+        ref_gate_size = ray.h.gate_size
+        ref_range_bin1 = ray.h.range_bin1
+
+        for i in range(self.nsweeps):
+            sweep = self._Volume.sweep[i]
+            assert sweep is not NULL
+            nrays = sweep.h.nrays
+            for j in range(nrays):
+                ray = sweep.ray[j]
+                assert ray is not NULL
+                if ray.h.gate_size != ref_gate_size:
+                    return False
+                if ray.h.range_bin1 != ref_range_bin1:
+                    return False
+        return True
 
     cdef _prtmode(self, _rsl_h.Ray_header h):
         """ Return the prt mode of a given Ray header. """

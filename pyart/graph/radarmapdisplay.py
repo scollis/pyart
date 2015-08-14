@@ -16,6 +16,7 @@ import numpy as np
 from mpl_toolkits.basemap import Basemap
 
 from .radardisplay import RadarDisplay
+from .common import parse_ax_fig, parse_vmin_vmax
 
 
 class RadarMapDisplay(RadarDisplay):
@@ -96,7 +97,7 @@ class RadarMapDisplay(RadarDisplay):
             raise ValueError('no basemap plotted')
 
     def plot_ppi_map(self, field, sweep=0, mask_tuple=None,
-                     vmin=None, vmax=None, cmap='jet', mask_outside=True,
+                     vmin=None, vmax=None, cmap='jet', mask_outside=False,
                      title=None, title_flag=True,
                      colorbar_flag=True, colorbar_label=None,
                      ax=None, fig=None,
@@ -105,7 +106,7 @@ class RadarMapDisplay(RadarDisplay):
                      min_lon=None, max_lon=None, min_lat=None, max_lat=None,
                      width=None, height=None, lon_0=None, lat_0=None,
                      resolution='h', shapefile=None, edges=True,
-                     filter_transitions=True, **kwargs):
+                     filter_transitions=True, embelish=True, **kwargs):
         """
         Plot a PPI volume sweep onto a geographic map.
 
@@ -191,11 +192,14 @@ class RadarMapDisplay(RadarDisplay):
             coordinates themselved as the gate edges, resulting in a plot
             in which the last gate in each ray and the entire last ray are not
             not plotted.
+        embelish: bool
+            True by default. Set to false to supress drawing of coastlines
+            etc.. Use for speedup when specifying shapefiles.
 
         """
         # parse parameters
-        ax, fig = self._parse_ax_fig(ax, fig)
-        vmin, vmax = self._parse_vmin_vmax(field, vmin, vmax)
+        ax, fig = parse_ax_fig(ax, fig)
+        vmin, vmax = parse_vmin_vmax(self._radar, field, vmin, vmax)
         if lat_lines is None:
             lat_lines = np.arange(30, 46, 1)
         if lon_lines is None:
@@ -233,10 +237,13 @@ class RadarMapDisplay(RadarDisplay):
                               resolution=resolution, ax=ax, **kwargs)
 
         # add embelishments
-        basemap.drawcoastlines(linewidth=1.25)
-        basemap.drawstates()
-        basemap.drawparallels(lat_lines, labels=[True, False, False, False])
-        basemap.drawmeridians(lon_lines, labels=[False, False, False, True])
+        if embelish is True:
+            basemap.drawcoastlines(linewidth=1.25)
+            basemap.drawstates()
+            basemap.drawparallels(lat_lines,
+                                  labels=[True, False, False, False])
+            basemap.drawmeridians(lon_lines,
+                                  labels=[False, False, False, True])
         self.basemap = basemap
         self._x0, self._y0 = basemap(self.loc[1], self.loc[0])
 
