@@ -15,6 +15,8 @@ Functions for performing radar retrievals.
     steiner_conv_strat
     calculate_snr_from_reflectivity
     texture_of_complex_phase
+    generic_circ_texture
+    velocity_circ_texture
 
 """
 
@@ -26,5 +28,6 @@ except:
 
 from .gate_id import map_profile_to_gates, fetch_radar_time_profile
 from .simple_moment_calculations import calculate_snr_from_reflectivity
+from .circular_texture import generic_circ_texture, velocity_circ_texture
 
 __all__ = [s for s in dir() if not s.startswith('_')]
