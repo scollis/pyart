@@ -11,7 +11,7 @@ proocessing
 import copy
 
 import numpy as np
-from scipy.signal importfind_peaks_cwt
+from scipy.signal import find_peaks_cwt
 from ..config import get_metadata
 from ..util import interval_std
 from scipy.ndimage import filters
