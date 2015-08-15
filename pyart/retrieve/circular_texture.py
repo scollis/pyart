@@ -24,7 +24,7 @@ def generic_circ_texture(radar, field, interval,
     ----------
     radar : Radar
         Radar object containing field to calculate the texture fron
-    interval : two element list
+    interval : twople
         folding interval
     texture_footprint: twople
         footprint of the standard deviation calculation in azimuth index and
@@ -41,13 +41,13 @@ def generic_circ_texture(radar, field, interval,
     """
     data = filters.generic_filter(\
             radar.fields[field]['data'],
-            interval_std, size = footprint,
+            interval_std, size = texture_footprint,
             extra_arguments = interval)
     if median_footprint == None:
         filtered_data = data
     else:
         filtered_data = filters.median_filter(data, size = median_footprint)
-    texture_field = pyart.config.get_metadata(key)
+    texture_field = get_metadata(field)
     texture_field['data'] = filtered_data
     texture_field['standard_name'] = 'texture_of_' +\
             texture_field['standard_name']
@@ -55,7 +55,7 @@ def generic_circ_texture(radar, field, interval,
 
 
 
-def velocity_circ_texture(radar, field, interval,
+def velocity_circ_texture(radar,
         texture_footprint = (4,4), median_footprint = None,
         velocity_key ='velocity' ):
     """
@@ -80,7 +80,7 @@ def velocity_circ_texture(radar, field, interval,
     """
     nyq = radar.instrument_parameters['nyquist_velocity']['data'][0]
     return generic_circ_texture(radar, velocity_key,
-            interval = [-nyq, nyq], texture_footprint = texture_footprint,
+            interval = (-nyq, nyq), texture_footprint = texture_footprint,
             median_footprint = median_footprint)
 
 
