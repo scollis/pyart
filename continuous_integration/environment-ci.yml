@@ -4,6 +4,7 @@ channels:
 dependencies:
   - numpy
   - scipy
+  - scikit-image
   - matplotlib
   - gdal
   - netcdf4
