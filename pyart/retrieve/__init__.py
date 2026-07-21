@@ -4,6 +4,7 @@ Radar retrievals.
 """
 
 from .advection import grid_displacement_pc, grid_shift  # noqa
+from .advect_interpolate import advection_interpolate, grid_optical_flow  # noqa
 from .comp_z import composite_reflectivity  # noqa
 from .echo_class import feature_detection  # noqa
 from .echo_class import conv_strat_yuter  # noqa

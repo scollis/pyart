@@ -7,6 +7,7 @@ dependencies:
   - python=3.13
   - numpy
   - scipy
+  - scikit-image
   - matplotlib
   - netcdf4
   - wradlib

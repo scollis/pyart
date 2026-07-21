@@ -702,3 +702,115 @@ def make_target_spectra_radar():
     fdata[:, :, :] = 10 * np.log10(scipy.signal.windows.gaussian(50, std=7) * max_value)
     radar.ds["spectra"].values = fdata
     return radar
+
+
+def make_advecting_scene_radar(
+    time_offset=0.0,
+    u=-12.0,
+    v=8.0,
+    ngates=400,
+    rays_per_sweep=360,
+    nsweeps=6,
+    gate_spacing=300.0,
+    elevations=None,
+):
+    """
+    Return a PPI radar whose reflectivity is an analytic scene advected by a
+    known, constant velocity.
+
+    The reflectivity field is composed of a broad stratiform patch, a tilted
+    convective line and two intense cells, all translating rigidly at velocity
+    ``(u, v)`` (m/s, eastward/northward). Because the scene is known in closed
+    form at every time, volumes generated at different ``time_offset`` values
+    provide exact ground truth for temporal-interpolation code such as
+    :py:func:`pyart.retrieve.advection_interpolate`.
+
+    Parameters
+    ----------
+    time_offset : float, optional
+        Time in seconds at which to sample the advecting scene. Default 0.
+    u, v : float, optional
+        Eastward and northward scene velocity in m/s. Defaults -12, 8.
+    ngates, rays_per_sweep, nsweeps : int, optional
+        Volume dimensions. Defaults 400, 360, 6.
+    gate_spacing : float, optional
+        Range gate spacing in metres. Default 300.
+    elevations : list of float, optional
+        Sweep elevation angles in degrees. Defaults to a six-tilt strategy.
+
+    Returns
+    -------
+    radar : Radar
+        PPI radar with a ``reflectivity`` field sampling the scene at
+        ``time_offset``.
+
+    """
+    if elevations is None:
+        elevations = [0.5, 1.5, 2.5, 3.5, 4.5, 6.0][:nsweeps]
+
+    radar = make_empty_ppi_radar(ngates, rays_per_sweep, nsweeps)
+    radar.range["data"] = (
+        np.arange(ngates) * gate_spacing + gate_spacing / 2.0
+    ).astype("float32")
+    radar.fixed_angle["data"] = np.asarray(elevations, dtype="float32")
+    radar.elevation["data"] = np.repeat(
+        np.asarray(elevations, dtype="float32"), rays_per_sweep
+    )
+    radar.init_gate_x_y_z()
+    radar.init_gate_longitude_latitude()
+    radar.init_gate_altitude()
+
+    xs = radar.gate_x["data"] - u * time_offset
+    ys = radar.gate_y["data"] - v * time_offset
+
+    layers = []
+    env = np.exp(-(((xs + 25000) / 38000.0) ** 2 + ((ys + 15000) / 34000.0) ** 2))
+    strat = 8 + 26 * env
+    layers.append(np.where(strat > 12, strat, np.nan))
+    line_d = (xs * 0.7 + ys * 0.7) / 1000.0
+    line_l = (-xs * 0.7 + ys * 0.7) / 1000.0
+    line = 48 * np.exp(-((line_d - 8) / 5.0) ** 2) * np.exp(-((line_l) / 45.0) ** 2)
+    layers.append(np.where(line > 12, line, np.nan))
+    for cx, cy, amp, sig in [(20000, 30000, 52, 4000.0), (48000, -12000, 50, 3500.0)]:
+        cell = amp * np.exp(-(((xs - cx) / sig) ** 2 + ((ys - cy) / sig) ** 2))
+        layers.append(np.where(cell > 12, cell, np.nan))
+    refl = layers[0]
+    for extra in layers[1:]:
+        refl = np.fmax(refl, extra)  # NaN-safe max keeps echo where either layer has it
+
+    fields = {"reflectivity": get_metadata("reflectivity")}
+    fields["reflectivity"]["data"] = np.ma.masked_invalid(refl.astype("float32"))
+    radar.fields = fields
+    return radar
+
+
+def make_advection_interpolation_triplet(u=-12.0, v=8.0, dt=420.0, alpha=0.5, **kwargs):
+    """
+    Return three radar volumes for testing advection interpolation.
+
+    Builds an advecting scene (see :py:func:`make_advecting_scene_radar`) at
+    three times: ``t1`` at 0 s, ``t3`` at ``dt`` s, and the true intermediate
+    volume ``t2`` at ``alpha * dt`` s. ``t2`` is the exact volume the
+    interpolation should reproduce from ``t1`` and ``t3``.
+
+    Parameters
+    ----------
+    u, v : float, optional
+        Eastward and northward scene velocity in m/s.
+    dt : float, optional
+        Time separation between ``t1`` and ``t3`` in seconds. Default 420.
+    alpha : float, optional
+        Fractional time of ``t2`` between ``t1`` and ``t3``. Default 0.5.
+    **kwargs
+        Passed to :py:func:`make_advecting_scene_radar`.
+
+    Returns
+    -------
+    t1, t2, t3 : Radar
+        The earlier volume, the true intermediate volume, and the later volume.
+
+    """
+    t1 = make_advecting_scene_radar(time_offset=0.0, u=u, v=v, **kwargs)
+    t2 = make_advecting_scene_radar(time_offset=alpha * dt, u=u, v=v, **kwargs)
+    t3 = make_advecting_scene_radar(time_offset=dt, u=u, v=v, **kwargs)
+    return t1, t2, t3
