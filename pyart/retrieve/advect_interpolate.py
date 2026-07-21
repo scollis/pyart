@@ -12,6 +12,24 @@ The interpolation is performed on the radar's native (azimuth, range, elevation)
 gate geometry, so the returned object is an ordinary
 :py:class:`~pyart.core.Radar` rather than a Cartesian grid.
 
+Motivation
+----------
+Combining successive volumes without accounting for storm motion (for example a
+plain time average of two scans, or summing scans into a rainfall accumulation)
+fragments a moving feature into a string of discrete maxima along its track,
+with gaps in between, rather than a continuous field. The artifact appears
+whenever the storm displacement between scans exceeds a pixel/gate footprint,
+and is worst at intermediate storm speeds. Advecting the fields to a common time
+before combining them removes it; this is the temporal-sampling problem examined
+by Fabry et al. (1994) and the basis of advection-correction accumulation
+methods.
+
+References
+----------
+Fabry, F., Bellon, A., Duncan, M. R., and Austin, G. L., 1994: High resolution
+rainfall measurements by radar for very small basins: the sampling problem
+reexamined. J. Hydrol., 161, 415-428, doi:10.1016/0022-1694(94)90138-4.
+
 """
 
 import copy
@@ -246,6 +264,19 @@ def advection_interpolate(
     largest at long range, where gates are large and echo moves several
     gate-widths between volumes. Purely kinematic morphing cannot represent
     storm growth or decay, so residual error concentrates at cell edges.
+
+    A plain time average of the two volumes (no advection) instead fragments a
+    moving cell into discrete maxima along its track once its displacement
+    between scans exceeds a gate footprint -- the temporal-sampling artifact
+    described by Fabry et al. (1994). Advecting to a common time before
+    blending, as done here, removes it.
+
+    References
+    ----------
+    Fabry, F., Bellon, A., Duncan, M. R., and Austin, G. L., 1994: High
+    resolution rainfall measurements by radar for very small basins: the
+    sampling problem reexamined. J. Hydrol., 161, 415-428,
+    doi:10.1016/0022-1694(94)90138-4.
 
     See Also
     --------
