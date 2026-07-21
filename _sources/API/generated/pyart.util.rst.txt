@@ -1,4 +1,4 @@
-pyart.util
+﻿pyart.util
 ==========
 
 .. rubric:: Description
@@ -25,6 +25,10 @@ pyart.util
     
     angular_texture_2d
     
+    column_vertical_profile
+    
+    compute_directional_stats
+    
     cross_section_ppi
     
     cross_section_rhi
@@ -39,7 +43,17 @@ pyart.util
     
     datetimes_from_radar
     
+    determine_sweeps
+    
     estimate_noise_hs74
+    
+    for_azimuth
+    
+    get_column_rays
+    
+    get_field_location
+    
+    image_mute_radar
     
     interval_mean
     
@@ -49,6 +63,8 @@ pyart.util
     
     join_radar
     
+    ma_broadcast_to
+    
     mean_of_two_angles
     
     mean_of_two_angles_deg
@@ -56,6 +72,10 @@ pyart.util
     rolling_window
     
     simulated_vel_from_profile
+    
+    sphere_distance
+    
+    subset_radar
     
     texture
     

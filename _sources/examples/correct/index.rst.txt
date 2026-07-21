@@ -1,0 +1,124 @@
+
+
+.. _sphx_glr_examples_correct:
+
+.. _moment_correct_examples:
+
+Moment correction examples
+--------------------------
+
+Performing radar moment corrections in antenna (radial) coordinates.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how to calculate the ZDR bias from VPT/Birdbath scans. The technique here uses a vertically pointing scan in regions of light rain. In these regions, raindrops should be approximately spherical and therefore their ZDR near zero. Therefore, we want the average ZDR in these regions. This code applies reflectivity and cross correlation ratio-based threshold to the ZDR bias calculation to ensure that we are taking the average ZDR in light rain.">
+
+.. only:: html
+
+  .. image:: /examples/correct/images/thumb/sphx_glr_plot_zdr_check_thumb.png
+    :alt:
+
+  :doc:`/examples/correct/plot_zdr_check`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">ZDR Bias Calculation</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how to correct and plot reflectivity from an ARM KAZR using a noise floor cloud mask.">
+
+.. only:: html
+
+  .. image:: /examples/correct/images/thumb/sphx_glr_plot_cloud_mask_thumb.png
+    :alt:
+
+  :doc:`/examples/correct/plot_cloud_mask`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Calculating and Plotting a Cloud Mask</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example the reflectivity attenuation is calculated and then corrected for a polarimetric radar using a Z-PHI method implemented in Py-ART.">
+
+.. only:: html
+
+  .. image:: /examples/correct/images/thumb/sphx_glr_plot_attenuation_thumb.png
+    :alt:
+
+  :doc:`/examples/correct/plot_attenuation`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Correct reflectivity attenuation</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example doppler velocities are dealiased using the ial condition of the dealiasing, using the region-based dealiasing algorithm in Py-ART.">
+
+.. only:: html
+
+  .. image:: /examples/correct/images/thumb/sphx_glr_plot_dealias_thumb.png
+    :alt:
+
+  :doc:`/examples/correct/plot_dealias`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Dealias doppler velocities using the Region Based Algorithm</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example doppler velocities from range height indicator (RHI) scans are dealiased, using custom parameters with the region-based dealiasing algorithm in Py-ART.">
+
+.. only:: html
+
+  .. image:: /examples/correct/images/thumb/sphx_glr_plot_dealias_rhi_thumb.png
+    :alt:
+
+  :doc:`/examples/correct/plot_dealias_rhi`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Dealias doppler velocities for an RHI file</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/correct/plot_zdr_check
+   /examples/correct/plot_cloud_mask
+   /examples/correct/plot_attenuation
+   /examples/correct/plot_dealias
+   /examples/correct/plot_dealias_rhi
+

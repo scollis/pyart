@@ -15,12 +15,14 @@ pyart.core.Radar
 
    ~Radar.add_field
    ~Radar.add_field_like
+   ~Radar.add_filter
    ~Radar.check_field_exists
    ~Radar.extract_sweeps
    ~Radar.get_azimuth
    ~Radar.get_elevation
    ~Radar.get_end
    ~Radar.get_field
+   ~Radar.get_gate_area
    ~Radar.get_gate_lat_lon_alt
    ~Radar.get_gate_x_y_z
    ~Radar.get_nyquist_vel

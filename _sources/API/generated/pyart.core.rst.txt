@@ -1,4 +1,4 @@
-pyart.core
+﻿pyart.core
 ==========
 
 .. rubric:: Description
@@ -33,6 +33,8 @@ pyart.core
     antenna_to_cartesian
     
     antenna_vectors_to_cartesian
+    
+    cartesian_to_antenna
     
     cartesian_to_geographic
     

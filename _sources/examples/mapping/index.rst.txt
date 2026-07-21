@@ -1,0 +1,106 @@
+
+
+.. _sphx_glr_examples_mapping:
+
+.. _mapping_examples:
+
+Mapping examples
+----------------
+
+Mapping one or multiple radars from antenna coordinates to a Cartesian grid.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Map the reflectivity field of a single radar from Antenna coordinates to a Cartesian grid.">
+
+.. only:: html
+
+  .. image:: /examples/mapping/images/thumb/sphx_glr_plot_map_one_radar_to_grid_thumb.png
+    :alt:
+
+  :doc:`/examples/mapping/plot_map_one_radar_to_grid`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Map a single radar to a Cartesian grid</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Map the reflectivity field of two nearby ARM XSARP radars from antenna coordinates to a Cartesian grid.">
+
+.. only:: html
+
+  .. image:: /examples/mapping/images/thumb/sphx_glr_plot_map_two_radars_to_grid_thumb.png
+    :alt:
+
+  :doc:`/examples/mapping/plot_map_two_radars_to_grid`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Map two radars to a Cartesian grid</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Map the reflectivity field of a single PPI sweep from Antenna (polar) coordinates to a Cartesian grid, while using a 2D weighting. This solution is valid only for this case (single PPI sweep), yet it is a useful one (an arguably global solution since it overlooks the z-dimension grid limits). The exclusion of the z-dimension from the RoI and weighting calculations results in minor errors, especially considering the high co-variance of neighboring radar volumes and the typically small Cartesian grid separation. Errors are effectively negligible at low elevation angles common to PPI sweeps.">
+
+.. only:: html
+
+  .. image:: /examples/mapping/images/thumb/sphx_glr_plot_grid_single_sweep_ppi_thumb.png
+    :alt:
+
+  :doc:`/examples/mapping/plot_grid_single_sweep_ppi`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Map a single PPI sweep to a Cartesian grid using 2D weighting</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Map the reflectivity field of a single radar in Antenna coordinates to another radar in Antenna coordinates and compare the fields.">
+
+.. only:: html
+
+  .. image:: /examples/mapping/images/thumb/sphx_glr_plot_compare_two_radars_gatemapper_thumb.png
+    :alt:
+
+  :doc:`/examples/mapping/plot_compare_two_radars_gatemapper`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Compare Two Radars Using Gatemapper</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/mapping/plot_map_one_radar_to_grid
+   /examples/mapping/plot_map_two_radars_to_grid
+   /examples/mapping/plot_grid_single_sweep_ppi
+   /examples/mapping/plot_compare_two_radars_gatemapper
+

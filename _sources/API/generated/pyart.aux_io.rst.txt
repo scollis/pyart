@@ -1,4 +1,4 @@
-pyart.aux\_io
+﻿pyart.aux\_io
 =============
 
 .. rubric:: Description
@@ -25,6 +25,8 @@ pyart.aux\_io
     
     read_kazr_spectra
     
+    read_mmcr
+    
     read_noxp_iphex_nc
     
     read_odim_h5
@@ -33,7 +35,11 @@ pyart.aux\_io
     
     read_radx
     
+    read_radx_grid
+    
     read_rainbow_wrl
+    
+    read_rxm25
     
     read_sinarame_h5
     

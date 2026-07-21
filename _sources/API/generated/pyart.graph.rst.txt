@@ -1,4 +1,4 @@
-pyart.graph
+﻿pyart.graph
 ===========
 
 .. rubric:: Description
@@ -27,4 +27,15 @@ pyart.graph
     
 
 
+
+
+.. rubric:: Functions
+
+.. autosummary::
+    :toctree: .
+    
+    plot_convstrat_scheme
+    
+    plot_maxcappi
+    
 

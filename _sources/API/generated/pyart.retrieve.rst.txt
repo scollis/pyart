@@ -1,4 +1,4 @@
-pyart.retrieve
+﻿pyart.retrieve
 ==============
 
 .. rubric:: Description
@@ -15,17 +15,41 @@ pyart.retrieve
 .. autosummary::
     :toctree: .
     
+    ZtoR
+    
     calculate_snr_from_reflectivity
     
     calculate_velocity_texture
     
+    composite_reflectivity
+    
     compute_cdr
+    
+    compute_evp
     
     compute_l
     
     compute_noisedBZ
     
+    compute_qvp
+    
+    compute_rqvp
+    
     compute_snr
+    
+    compute_svp
+    
+    compute_ts_along_coord
+    
+    compute_vp
+    
+    conv_strat_raut
+    
+    conv_strat_yuter
+    
+    create_cappi
+    
+    create_cfad
     
     dealias_spectra
     
@@ -42,6 +66,8 @@ pyart.retrieve
     est_rain_rate_zkdp
     
     est_rain_rate_zpoly
+    
+    feature_detection
     
     fetch_radar_time_profile
     
@@ -67,8 +93,12 @@ pyart.retrieve
     
     steiner_conv_strat
     
+    storm_relative_velocity
+    
     texture_of_complex_phase
     
-    velocity_azimuth_display
+    vad_browning
+    
+    vad_michelson
     
 

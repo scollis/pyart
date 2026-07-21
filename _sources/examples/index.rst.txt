@@ -1,0 +1,968 @@
+:orphan:
+
+Example Gallery
+===============
+
+The files used in these examples are available for download_.
+
+.. _download: https://adc.arm.gov/pyart/example_data/
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+Moment correction examples
+--------------------------
+
+Performing radar moment corrections in antenna (radial) coordinates.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how to calculate the ZDR bias from VPT/Birdbath scans. The technique here uses a vertically pointing scan in regions of light rain. In these regions, raindrops should be approximately spherical and therefore their ZDR near zero. Therefore, we want the average ZDR in these regions. This code applies reflectivity and cross correlation ratio-based threshold to the ZDR bias calculation to ensure that we are taking the average ZDR in light rain.">
+
+.. only:: html
+
+  .. image:: /examples/correct/images/thumb/sphx_glr_plot_zdr_check_thumb.png
+    :alt:
+
+  :doc:`/examples/correct/plot_zdr_check`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">ZDR Bias Calculation</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example shows how to correct and plot reflectivity from an ARM KAZR using a noise floor cloud mask.">
+
+.. only:: html
+
+  .. image:: /examples/correct/images/thumb/sphx_glr_plot_cloud_mask_thumb.png
+    :alt:
+
+  :doc:`/examples/correct/plot_cloud_mask`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Calculating and Plotting a Cloud Mask</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example the reflectivity attenuation is calculated and then corrected for a polarimetric radar using a Z-PHI method implemented in Py-ART.">
+
+.. only:: html
+
+  .. image:: /examples/correct/images/thumb/sphx_glr_plot_attenuation_thumb.png
+    :alt:
+
+  :doc:`/examples/correct/plot_attenuation`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Correct reflectivity attenuation</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example doppler velocities are dealiased using the ial condition of the dealiasing, using the region-based dealiasing algorithm in Py-ART.">
+
+.. only:: html
+
+  .. image:: /examples/correct/images/thumb/sphx_glr_plot_dealias_thumb.png
+    :alt:
+
+  :doc:`/examples/correct/plot_dealias`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Dealias doppler velocities using the Region Based Algorithm</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example doppler velocities from range height indicator (RHI) scans are dealiased, using custom parameters with the region-based dealiasing algorithm in Py-ART.">
+
+.. only:: html
+
+  .. image:: /examples/correct/images/thumb/sphx_glr_plot_dealias_rhi_thumb.png
+    :alt:
+
+  :doc:`/examples/correct/plot_dealias_rhi`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Dealias doppler velocities for an RHI file</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+Input/Output Examples
+--------------------------
+
+Reading/writing a variety of radar data using Py-ART.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example which uses xradar and Py-ART to read and plot Cfradial2/FM301 data.">
+
+.. only:: html
+
+  .. image:: /examples/io/images/thumb/sphx_glr_plot_read_cfradial2_thumb.png
+    :alt:
+
+  :doc:`/examples/io/plot_read_cfradial2`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Read and Plot Cfradial2/FM301 data Using Xradar and Py-ART</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Within this example, we show how you can remotely access Next Generation Weather Radar (NEXRAD) Data from Google Cloud Storage and plot quick looks of the datasets.">
+
+.. only:: html
+
+  .. image:: /examples/io/images/thumb/sphx_glr_plot_nexrad_data_google_cloud_thumb.png
+    :alt:
+
+  :doc:`/examples/io/plot_nexrad_data_google_cloud`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reading NEXRAD Data from Google Cloud</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this example, we will show how to read in older NEXRAD files prior to 2008 that are missing some coordinate metadata.">
+
+.. only:: html
+
+  .. image:: /examples/io/images/thumb/sphx_glr_plot_older_nexrad_data_aws_thumb.png
+    :alt:
+
+  :doc:`/examples/io/plot_older_nexrad_data_aws`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reading Older NEXRAD Data and Fixing Latitude and Longitude Issues</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Within this example, we show how you can remotely access Next Generation Weather Radar (NEXRAD) Data from Amazon Web Services and plot quick looks of the datasets.">
+
+.. only:: html
+
+  .. image:: /examples/io/images/thumb/sphx_glr_plot_nexrad_data_aws_thumb.png
+    :alt:
+
+  :doc:`/examples/io/plot_nexrad_data_aws`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Reading NEXRAD Data from the AWS Cloud</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+Mapping examples
+----------------
+
+Mapping one or multiple radars from antenna coordinates to a Cartesian grid.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Map the reflectivity field of a single radar from Antenna coordinates to a Cartesian grid.">
+
+.. only:: html
+
+  .. image:: /examples/mapping/images/thumb/sphx_glr_plot_map_one_radar_to_grid_thumb.png
+    :alt:
+
+  :doc:`/examples/mapping/plot_map_one_radar_to_grid`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Map a single radar to a Cartesian grid</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Map the reflectivity field of two nearby ARM XSARP radars from antenna coordinates to a Cartesian grid.">
+
+.. only:: html
+
+  .. image:: /examples/mapping/images/thumb/sphx_glr_plot_map_two_radars_to_grid_thumb.png
+    :alt:
+
+  :doc:`/examples/mapping/plot_map_two_radars_to_grid`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Map two radars to a Cartesian grid</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Map the reflectivity field of a single PPI sweep from Antenna (polar) coordinates to a Cartesian grid, while using a 2D weighting. This solution is valid only for this case (single PPI sweep), yet it is a useful one (an arguably global solution since it overlooks the z-dimension grid limits). The exclusion of the z-dimension from the RoI and weighting calculations results in minor errors, especially considering the high co-variance of neighboring radar volumes and the typically small Cartesian grid separation. Errors are effectively negligible at low elevation angles common to PPI sweeps.">
+
+.. only:: html
+
+  .. image:: /examples/mapping/images/thumb/sphx_glr_plot_grid_single_sweep_ppi_thumb.png
+    :alt:
+
+  :doc:`/examples/mapping/plot_grid_single_sweep_ppi`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Map a single PPI sweep to a Cartesian grid using 2D weighting</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Map the reflectivity field of a single radar in Antenna coordinates to another radar in Antenna coordinates and compare the fields.">
+
+.. only:: html
+
+  .. image:: /examples/mapping/images/thumb/sphx_glr_plot_compare_two_radars_gatemapper_thumb.png
+    :alt:
+
+  :doc:`/examples/mapping/plot_compare_two_radars_gatemapper`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Compare Two Radars Using Gatemapper</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+Plotting examples
+-----------------
+
+Plotting real world radar data with Py-ART.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example which creates a RHI plot of a MDV file using a RadarDisplay object.">
+
+.. only:: html
+
+  .. image:: /examples/plotting/images/thumb/sphx_glr_plot_rhi_mdv_thumb.png
+    :alt:
+
+  :doc:`/examples/plotting/plot_rhi_mdv`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Create a RHI plot from a MDV file</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This is an example of how to plot a corner reflector.">
+
+.. only:: html
+
+  .. image:: /examples/plotting/images/thumb/sphx_glr_plot_corner_reflector_thumb.png
+    :alt:
+
+  :doc:`/examples/plotting/plot_corner_reflector`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plot a Corner Reflector</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example which creates a PPI plot of a MDV file using a RadarDisplay object.">
+
+.. only:: html
+
+  .. image:: /examples/plotting/images/thumb/sphx_glr_plot_ppi_mdv_thumb.png
+    :alt:
+
+  :doc:`/examples/plotting/plot_ppi_mdv`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Create a PPI plot from a MDV file</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example which creates a PPI plot of a Cfradial file.">
+
+.. only:: html
+
+  .. image:: /examples/plotting/images/thumb/sphx_glr_plot_ppi_cfradial_thumb.png
+    :alt:
+
+  :doc:`/examples/plotting/plot_ppi_cfradial`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Create a PPI plot from a Cfradial file</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example which creates a plot containing the first collected scan from a NEXRAD file.">
+
+.. only:: html
+
+  .. image:: /examples/plotting/images/thumb/sphx_glr_plot_nexrad_reflectivity_thumb.png
+    :alt:
+
+  :doc:`/examples/plotting/plot_nexrad_reflectivity`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Create a plot of NEXRAD reflectivity</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example which extracts a cross section at two azimuth angles from a volume of PPI scans and plots both cross sections.">
+
+.. only:: html
+
+  .. image:: /examples/plotting/images/thumb/sphx_glr_plot_xsect_thumb.png
+    :alt:
+
+  :doc:`/examples/plotting/plot_xsect`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plot a cross section from  a PPI volume</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example which creates a RHI plot of a CF/Radial file using a RadarDisplay object.">
+
+.. only:: html
+
+  .. image:: /examples/plotting/images/thumb/sphx_glr_plot_rhi_cfradial_singlescan_thumb.png
+    :alt:
+
+  :doc:`/examples/plotting/plot_rhi_cfradial_singlescan`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Create a multiple panel RHI plot from a CF/Radial file</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to create and compare PPI (Plan Position Indicator) and CAPPI (Constant Altitude Plan Position Indicator) plots using radar data.">
+
+.. only:: html
+
+  .. image:: /examples/plotting/images/thumb/sphx_glr_plot_cappi_thumb.png
+    :alt:
+
+  :doc:`/examples/plotting/plot_cappi`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Compare PPI vs CAPPI</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example which creates a two panel RHI plot of a cfradial file.  The fields included in the two panels are reflectivity and doppler velocity.">
+
+.. only:: html
+
+  .. image:: /examples/plotting/images/thumb/sphx_glr_plot_rhi_two_panel_thumb.png
+    :alt:
+
+  :doc:`/examples/plotting/plot_rhi_two_panel`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Create a two panel RHI plot</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example which creates a plot containing multiple moments taken from a NEXRAD Archive file.">
+
+.. only:: html
+
+  .. image:: /examples/plotting/images/thumb/sphx_glr_plot_nexrad_multiple_moments_thumb.png
+    :alt:
+
+  :doc:`/examples/plotting/plot_nexrad_multiple_moments`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Create a plot of multiple moments from a NEXRAD file</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example which creates a multiple panel RHI plot of a CF/Radial file using a RadarDisplay object.">
+
+.. only:: html
+
+  .. image:: /examples/plotting/images/thumb/sphx_glr_plot_rhi_cfradial_thumb.png
+    :alt:
+
+  :doc:`/examples/plotting/plot_rhi_cfradial`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Create a multiple panel RHI plot from a CF/Radial file</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example that creates a 3 panel plot of a PPI, latitude slice, and longitude slice using xarray and a cartopy background.">
+
+.. only:: html
+
+  .. image:: /examples/plotting/images/thumb/sphx_glr_plot_three_panel_gridmapdisplay_thumb.png
+    :alt:
+
+  :doc:`/examples/plotting/plot_three_panel_gridmapdisplay`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Create a 3 panel plot using GridMapDisplay</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example which creates a PPI plot of a file with a cartopy background and range rings">
+
+.. only:: html
+
+  .. image:: /examples/plotting/images/thumb/sphx_glr_plot_ppi_with_rings_thumb.png
+    :alt:
+
+  :doc:`/examples/plotting/plot_ppi_with_rings`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Create a PPI plot on a cartopy map</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Image muting reduces the visual prominence of the reflectivities within identified melting and mixed precipitation features in winter storms (i.e. regions with low correlation coefficient values). Reflectivities corresponding to melting and mixed precipitation features are deemphasized using a gray scale and the regions with just snow and just rain are depicted in a corresponding full-color scale. The ultimate utility of image muting radar reflectivity is to reduce the misinterpretation of regions of melting or mixed precipitation as opposed to heavy snow or heavy rain. See Tomkins et al. (2022) for full details.">
+
+.. only:: html
+
+  .. image:: /examples/plotting/images/thumb/sphx_glr_plot_nexrad_image_muted_reflectivity_thumb.png
+    :alt:
+
+  :doc:`/examples/plotting/plot_nexrad_image_muted_reflectivity`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Create an image-muted reflectivity plot</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example which creates an RHI plot of velocity using a RadarDisplay object and adding Reflectivity contours from the same MDV file.">
+
+.. only:: html
+
+  .. image:: /examples/plotting/images/thumb/sphx_glr_plot_rhi_data_overlay_thumb.png
+    :alt:
+
+  :doc:`/examples/plotting/plot_rhi_data_overlay`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Create an RHI plot with reflectivity contour lines from an MDV file</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This is an example of how to plot a cross section of your radar grid using the GridMapDisplay">
+
+.. only:: html
+
+  .. image:: /examples/plotting/images/thumb/sphx_glr_plot_cross_section_thumb.png
+    :alt:
+
+  :doc:`/examples/plotting/plot_cross_section`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plot a Cross Section from a Grid</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This is an example of how to modify a colobar within a Py-ART display object.">
+
+.. only:: html
+
+  .. image:: /examples/plotting/images/thumb/sphx_glr_plot_modify_colorbar_thumb.png
+    :alt:
+
+  :doc:`/examples/plotting/plot_modify_colorbar`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Modify a Colorbar for your Plot</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This is an example of how to plot a Max-CAPPI within a Py-ART grid display object.">
+
+.. only:: html
+
+  .. image:: /examples/plotting/images/thumb/sphx_glr_plot_max_cappi_thumb.png
+    :alt:
+
+  :doc:`/examples/plotting/plot_max_cappi`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plot Max-CAPPI</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example which creates an RHI plot of reflectivity using a RadarDisplay object and adding differnential Reflectivity contours from the same MDV file.">
+
+.. only:: html
+
+  .. image:: /examples/plotting/images/thumb/sphx_glr_plot_rhi_contours_differential_reflectivity_thumb.png
+    :alt:
+
+  :doc:`/examples/plotting/plot_rhi_contours_differential_reflectivity`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Create an RHI plot with reflectivity contour lines from an MDV file</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This is an example of what colormaps are available in Py-ART, and how to add them to your own plots.">
+
+.. only:: html
+
+  .. image:: /examples/plotting/images/thumb/sphx_glr_plot_choose_a_colormap_thumb.png
+    :alt:
+
+  :doc:`/examples/plotting/plot_choose_a_colormap`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Choose a Colormap for your Plot</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+Retrieval Examples
+------------------
+
+Retrievals from various radars, such as additional fields or subsets of the data.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Given a radar and a point, extract the column of radar data values above a point">
+
+.. only:: html
+
+  .. image:: /examples/retrieve/images/thumb/sphx_glr_plot_column_subset_thumb.png
+    :alt:
+
+  :doc:`/examples/retrieve/plot_column_subset`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Extract a radar column above a point</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Calculates and plots the composite reflectivity, or the maximum reflectivity across all of the elevations.">
+
+.. only:: html
+
+  .. image:: /examples/retrieve/images/thumb/sphx_glr_plot_composite_reflectivity_thumb.png
+    :alt:
+
+  :doc:`/examples/retrieve/plot_composite_reflectivity`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Calculate and Plot Composite Reflectivity</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Calculates a VAD and plots a vertical profile of wind">
+
+.. only:: html
+
+  .. image:: /examples/retrieve/images/thumb/sphx_glr_plot_vad_thumb.png
+    :alt:
+
+  :doc:`/examples/retrieve/plot_vad`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Calculate and Plot VAD profile</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Calculates a hydrometeor classification and displays the results">
+
+.. only:: html
+
+  .. image:: /examples/retrieve/images/thumb/sphx_glr_plot_hydrometeor_thumb.png
+    :alt:
+
+  :doc:`/examples/retrieve/plot_hydrometeor`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Calculate and Plot hydrometeor classification</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="- The column_profile function extracts a vertical profile at a given latitude/longitude. - The rain_rate_categorized function computes rain rates based on categorized reflectivity. - The script reads multiple radar files, processes them, and visualizes the results.">
+
+.. only:: html
+
+  .. image:: /examples/retrieve/images/thumb/sphx_glr_plot_qpe_thumb.png
+    :alt:
+
+  :doc:`/examples/retrieve/plot_qpe`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Radar-Based Quantitative Precipitation Estimation (QPE)</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip=" This script shows how to use hydrometeor classification for X-band radar data.  We are reading radar data, plotting some variables of interest and applying the  classification to identify types of precipitation.">
+
+.. only:: html
+
+  .. image:: /examples/retrieve/images/thumb/sphx_glr_plot_hydrometeor_class_x_band_thumb.png
+    :alt:
+
+  :doc:`/examples/retrieve/plot_hydrometeor_class_x_band`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Hydrometeor Classification with Custom Frequency Settings</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Creating a CFAD diagram">
+
+.. only:: html
+
+  .. image:: /examples/retrieve/images/thumb/sphx_glr_plot_cfad_thumb.png
+    :alt:
+
+  :doc:`/examples/retrieve/plot_cfad`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Creating a CFAD diagram</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Convective-Stratiform classification">
+
+.. only:: html
+
+  .. image:: /examples/retrieve/images/thumb/sphx_glr_plot_convective_stratiform_thumb.png
+    :alt:
+
+  :doc:`/examples/retrieve/plot_convective_stratiform`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Convective-Stratiform classification</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Feature Detection classification">
+
+.. only:: html
+
+  .. image:: /examples/retrieve/images/thumb/sphx_glr_plot_feature_detection_thumb.png
+    :alt:
+
+  :doc:`/examples/retrieve/plot_feature_detection`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Feature Detection classification</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+Xradar Examples
+------------------
+
+Examples of using Xradar with Py-ART to accomplish different tasks.
+
+
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+.. thumbnail-parent-div-open
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example which uses xradar and Py-ART to create a PPI plot of a Cfradial file.">
+
+.. only:: html
+
+  .. image:: /examples/xradar/images/thumb/sphx_glr_plot_xradar_thumb.png
+    :alt:
+
+  :doc:`/examples/xradar/plot_xradar`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Plot a PPI Using Xradar and Py-ART</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example which uses xradar and Py-ART to grid a PPI file.">
+
+.. only:: html
+
+  .. image:: /examples/xradar/images/thumb/sphx_glr_plot_grid_xradar_thumb.png
+    :alt:
+
+  :doc:`/examples/xradar/plot_grid_xradar`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Grid Data Using Xradar and Py-ART</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="An example which uses xradar and Py-ART to dealias radial velocities.">
+
+.. only:: html
+
+  .. image:: /examples/xradar/images/thumb/sphx_glr_plot_dealias_xradar_thumb.png
+    :alt:
+
+  :doc:`/examples/xradar/plot_dealias_xradar`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Dealias Radial Velocities Using Xradar and Py-ART</div>
+    </div>
+
+
+.. thumbnail-parent-div-close
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+   :includehidden:
+
+
+   /examples/correct/index.rst
+   /examples/io/index.rst
+   /examples/mapping/index.rst
+   /examples/plotting/index.rst
+   /examples/retrieve/index.rst
+   /examples/xradar/index.rst
+
+
+.. only:: html
+
+  .. container:: sphx-glr-footer sphx-glr-footer-gallery
+
+    .. container:: sphx-glr-download sphx-glr-download-python
+
+      :download:`Download all examples in Python source code: examples_python.zip </examples/examples_python.zip>`
+
+    .. container:: sphx-glr-download sphx-glr-download-jupyter
+
+      :download:`Download all examples in Jupyter notebooks: examples_jupyter.zip </examples/examples_jupyter.zip>`
+
+
+.. only:: html
+
+ .. rst-class:: sphx-glr-signature
+
+    `Gallery generated by Sphinx-Gallery <https://sphinx-gallery.github.io>`_
