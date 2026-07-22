@@ -15,6 +15,7 @@ gate geometry, so the returned object is an ordinary
 """
 
 import copy
+import warnings
 
 import numpy as np
 from netCDF4 import num2date
@@ -154,14 +155,32 @@ def _displacement_interpolators(disp_y, disp_x, echo_mask, z, y, x):
 
 
 def _sweep_sampler(radar, sweep, field):
-    """Return (azimuth_sorted_deg, range_m, values, ) for one sweep, az-sorted."""
+    """Return (azimuth_sorted_deg, range_m, values, ) for one sweep, az-sorted.
+
+    Azimuths are sorted and de-duplicated: a strictly ascending axis is
+    required by the RegularGridInterpolator in :py:func:`_sample_native`, but
+    real volumes routinely repeat an azimuth (e.g. an extra wrap-past-start ray
+    on the top sweep). Rays sharing an azimuth are collapsed to their mean.
+    """
     start, end = radar.get_start_end(sweep)
     az = radar.azimuth["data"][start : end + 1]
     data = np.ma.filled(
         radar.fields[field]["data"][start : end + 1].astype("float64"), np.nan
     )
     order = np.argsort(az)
-    return az[order], radar.range["data"], data[order]
+    az_sorted, data_sorted = az[order], data[order]
+
+    az_unique, inv = np.unique(az_sorted, return_inverse=True)
+    if az_unique.size != az_sorted.size:
+        # collapse duplicate-azimuth rays to their nanmean so the axis is strict
+        collapsed = np.full((az_unique.size, data_sorted.shape[1]), np.nan)
+        for j in range(az_unique.size):
+            rows = data_sorted[inv == j]
+            with warnings.catch_warnings():
+                warnings.simplefilter("ignore", category=RuntimeWarning)
+                collapsed[j] = np.nanmean(rows, axis=0)
+        az_sorted, data_sorted = az_unique, collapsed
+    return az_sorted, radar.range["data"], data_sorted
 
 
 def _sample_native(az_query, range_query, sampler):
